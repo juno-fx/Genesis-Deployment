@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genesis
+  namespace: argocd
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: genesis
+  template:
+    metadata:
+      labels:
+        app: genesis
+    spec:
+      serviceAccountName: genesis
+      {{- if .Values.image_pull_secret }}
+      imagePullSecrets:
+        - name: {{ .Values.image_pull_secret }}
+      {{- end }}
+      {{- if .Values.node_selector.enable }}
+      nodeSelector:
+        {{- range $key, $value := .Values.node_selector.labels }}
+        {{ $key }}: "{{ $value }}"
+        {{- end }}
+      {{- end }}
+      containers:
+        - name: genesis
+          image: "{{ .Values.registry }}/{{ .Values.image}}"
+          imagePullPolicy: Always
+          env:
+            - name: GALAXY
+              value: "Milky Way"
+            - name: ICON
+              value: "/universe/assets/galaxy-1.webp"
+          {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value }}
+          {{- end }}
+          ports:
+            - containerPort: 3000
+              name: frontend
+            - containerPort: 8000
+              name: backend
