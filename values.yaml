@@ -3,7 +3,7 @@ image_pull_secret:                        # Image pull secret to use for the pro
 host:                                     # Hostname to use for the Genesis ingress
 license_key:                              # License to use for the Genesis server
 
-image: genesis:v0.0.3                     # Image to pull for Genesis
+image: genesis:v0.0.4                     # Image to pull for Genesis
 env: {}                                   # Environment variables to set for the Genesis server
 node_selector:                            # Node selector to deploy the Genesis server to
   enable: true                            # Enable node selector
