@@ -34,6 +34,10 @@ spec:
               value: "Milky Way"
             - name: ICON
               value: "/universe/assets/galaxy-1.webp"
+          {{- if .Values.image_pull_secret }}
+            - name: IMAGE_PULL_SECRET
+              value: {{ .Values.image_pull_secret }}
+          {{- end }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: {{ $value }}
