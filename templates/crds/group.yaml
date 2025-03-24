@@ -7,7 +7,6 @@ spec:
   versions:
     - name: v1
       served: true
-      storage: true
       schema:
         openAPIV3Schema:
           type: object
@@ -23,10 +22,35 @@ spec:
                   type: array
                   items:
                     type: string
+    - name: v2
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              x-kubernetes-validations:
+                - rule: "self.type == 'service' || self.type == 'role' || self.type == 'project' || self.type == 'posix'"
+                  message: "Group type needs to be either service, role, project, or posix"
+              required:
+                - members
+                - type
+              properties:
+                uid:
+                  type: integer
+                members:
+                  type: array
+                  items:
+                    type: string
+                type:
+                  type: string
+                  default: "role"
   scope: Cluster
   names:
     plural: groups
     singular: group
     kind: Group
     shortNames:
-    - g
+      - g

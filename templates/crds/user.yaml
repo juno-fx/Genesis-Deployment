@@ -25,4 +25,4 @@ spec:
     singular: user
     kind: User
     shortNames:
-    - u
+      - u
