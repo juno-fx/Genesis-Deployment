@@ -25,12 +25,10 @@ spec:
 
     spec:
       serviceAccountName: titan
-      {{- if .Values.titan.node_selector.enable }}
       nodeSelector:
         {{- range $key, $value := .Values.titan.node_selector.labels }}
         {{ $key }}: {{ $value }}
         {{- end }}
-      {{- end }}
       {{- if .Values.image_pull_secret }}
       imagePullSecrets:
         - name: {{ .Values.image_pull_secret }}
