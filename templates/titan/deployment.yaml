@@ -27,7 +27,7 @@ spec:
       serviceAccountName: titan
       nodeSelector:
         {{- range $key, $value := .Values.titan.node_selector.labels }}
-        {{ $key }}: {{ $value }}
+        {{ $key }}: "{{ $value }}"
         {{- end }}
       {{- if .Values.image_pull_secret }}
       imagePullSecrets:
