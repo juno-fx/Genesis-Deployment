@@ -46,10 +46,6 @@ spec:
               value: {{ .Values.titan.email }}
             - name: ORION_OWNER_UID
               value: "{{ .Values.titan.uid }}"
-            - name: PROJECT
-              value: {{lower .Values.show }}
-            - name: PROJECT_GUID
-              value: "{{ .Values.guid }}"
           resources:
             requests:
               cpu: 500m
