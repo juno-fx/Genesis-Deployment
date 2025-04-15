@@ -7,6 +7,19 @@ spec:
   versions:
     - name: v1
       served: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                uid:
+                  type: integer
+                email:
+                  type: string
+    - name: v2
+      served: true
       storage: true
       schema:
         openAPIV3Schema:
@@ -19,6 +32,9 @@ spec:
                   type: integer
                 email:
                   type: string
+                active:
+                  type: boolean
+                  default: True
   scope: Cluster
   names:
     plural: users
