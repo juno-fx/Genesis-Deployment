@@ -2,6 +2,7 @@ registry: empty.com                       # Registry to pull the Genesis image f
 image_pull_secret:                        # Image pull secret to use for the project. This is the name of the secret in the namespace
 host:                                     # Hostname to use for the Genesis ingress
 license_key:                              # License to use for the Genesis server
+pull_policy: Always                       # Pull policy to use for the Genesis image
 
 image: genesis:v0.0.5                     # Image to pull for Genesis
 env: {}                                   # Environment variables to set for the Genesis server

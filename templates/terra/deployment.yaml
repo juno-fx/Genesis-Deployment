@@ -35,7 +35,7 @@ spec:
       {{- end }}
       containers:
         - name: terra
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.pull_policy }}
           image: {{.Values.registry}}/{{ .Values.terra.image }}
           resources:
             requests:
