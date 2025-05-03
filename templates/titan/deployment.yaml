@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: titan
+  namespace: argocd
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: titan
+
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 50%
+    type: RollingUpdate
+
+  template:
+    metadata:
+      annotations:
+        # Allow for footprint consolidation
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+      labels:
+        app: titan
+
+    spec:
+      serviceAccountName: titan
+      nodeSelector:
+        {{- range $key, $value := .Values.titan.node_selector.labels }}
+        {{ $key }}: "{{ $value }}"
+        {{- end }}
+      {{- if .Values.image_pull_secret }}
+      imagePullSecrets:
+        - name: {{ .Values.image_pull_secret }}
+      {{- end }}
+      containers:
+        - name: titan
+          imagePullPolicy: {{ .Values.pull_policy }}
+          image: {{.Values.registry}}/{{ .Values.titan.image }}
+          env:
+            - name: ORION_OWNER
+              value: {{ .Values.titan.owner }}
+            - name: ORION_EMAIL
+              value: {{ .Values.titan.email }}
+            - name: ORION_OWNER_UID
+              value: "{{ .Values.titan.uid }}"
+          resources:
+            requests:
+              cpu: 500m
+              memory: 200Mi
+          ports:
+            - containerPort: 8000
+              name: endpoint

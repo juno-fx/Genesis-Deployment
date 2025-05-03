@@ -28,7 +28,7 @@ spec:
       containers:
         - name: genesis
           image: "{{ .Values.registry }}/{{ .Values.image}}"
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.pull_policy }}
           env:
             - name: GALAXY
               value: "Milky Way"
