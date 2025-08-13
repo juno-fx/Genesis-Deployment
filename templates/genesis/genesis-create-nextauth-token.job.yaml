@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: genesis-create-nextauth-token
+  namespace: argocd
+spec:
+  template:
+    spec:
+      containers:
+        - name: generate-nextauth-token
+          image: "{{ .Values.registry }}/{{ .Values.image }}"
+          command: ["/create-nextauth-secret"]
+      restartPolicy: OnFailure
+      serviceAccountName: genesis
