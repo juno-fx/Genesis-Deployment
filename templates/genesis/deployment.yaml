@@ -30,6 +30,11 @@ spec:
           image: "{{ .Values.registry }}/{{ .Values.image}}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
+            - name: AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: juno-auth-secret
             - name: GALAXY
               value: "Milky Way"
             - name: ICON
