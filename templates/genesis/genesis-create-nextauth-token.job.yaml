@@ -6,9 +6,14 @@ metadata:
 spec:
   template:
     spec:
+      {{- if .Values.image_pull_secret }}
+      imagePullSecrets:
+        - name: {{ .Values.image_pull_secret }}
+      {{- end }}
       containers:
         - name: generate-nextauth-token
           image: "{{ .Values.registry }}/{{ .Values.image }}"
           command: ["/create-nextauth-secret"]
+          imagePullPolicy: {{ .Values.pull_policy }}
       restartPolicy: OnFailure
       serviceAccountName: genesis
