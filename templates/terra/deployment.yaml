@@ -39,8 +39,8 @@ spec:
           image: {{.Values.registry}}/{{ .Values.terra.image }}
           resources:
             requests:
-              cpu: 500m
-              memory: 200Mi
+              cpu: 2000m
+              memory: 400Mi
           ports:
             - containerPort: 8000
               name: endpoint
