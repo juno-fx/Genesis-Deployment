@@ -20,6 +20,9 @@ spec:
       annotations:
         # Allow for footprint consolidation
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+{{- range $key, $value := .Values.titan.extra_annotations }}
+        {{ $key }}: "{{ $value }}"
+{{- end }}
       labels:
         app: titan
 

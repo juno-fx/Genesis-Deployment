@@ -3,6 +3,10 @@ kind: Deployment
 metadata:
   name: genesis
   namespace: argocd
+  annotations:
+{{- range $key, $value := .Values.extra_annotations }}
+    {{ $key }}: "{{ $value }}"
+{{- end }}
 spec:
   replicas: 1
   revisionHistoryLimit: 0
@@ -13,6 +17,10 @@ spec:
     metadata:
       labels:
         app: genesis
+      annotations:
+        {{- range $key, $value := .Values.extra_annotations }}
+          {{ $key }}: "{{ $value }}"
+        {{- end }}
     spec:
       serviceAccountName: genesis
       {{- if .Values.image_pull_secret }}
