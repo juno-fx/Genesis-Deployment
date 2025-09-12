@@ -11,8 +11,8 @@ node_selector:                              # Node selector to deploy the Genesi
     juno-innovations.com/service: "true"
 
 # Primarily used for Juno-internal development to inject annotations to resources
-extra_annotations: []
-genesis_token_creation_extra_annotations: []
+extra_annotations: {}
+genesis_token_creation_extra_annotations: {}
 
 titan:
   extra_annotations: []
