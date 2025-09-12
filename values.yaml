@@ -9,7 +9,10 @@ node_selector:                              # Node selector to deploy the Genesi
   enable: true                              # Enable node selector
   labels:                                   # Node selector to deploy the Genesis server to
     juno-innovations.com/service: "true"
+
+# Primarily used for Juno-internal development to inject annotations to resources
 extra_annotations: []
+genesis_token_creation_extra_annotations: []
 
 titan:
   extra_annotations: []

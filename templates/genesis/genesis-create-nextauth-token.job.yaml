@@ -3,8 +3,17 @@ kind: Job
 metadata:
   name: genesis-create-nextauth-token
   namespace: argocd
+  annotations:
+    {{- range $key, $value := .Values.genesis_token_creation_extra_annotations }}
+      {{ $key }}: "{{ $value }}"
+    {{- end }}
 spec:
   template:
+    metadata:
+      annotations:
+        {{- range $key, $value := .Values.genesis_token_creation_extra_annotations }}
+          {{ $key }}: "{{ $value }}"
+        {{- end }}
     spec:
       {{- if .Values.image_pull_secret }}
       imagePullSecrets:
