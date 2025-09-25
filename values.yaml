@@ -2,6 +2,12 @@ registry: junoinnovations                   # Registry to pull the Genesis image
 image_pull_secret:                          # Image pull secret to use for the project. This is the name of the secret in the namespace
 host:                                       # Hostname to use for the Genesis ingress
 pull_policy: Always                         # Pull policy to use for the Genesis image
+gateway:
+  name: orion
+  namespace: argocd
+  controllerName: "traefik.io/gateway-controller"
+  tlsSecretName: orion-tls
+http_scheme: https
 
 image: genesis:v2.2.1                       # Image to pull for Genesis
 env: {}                                     # Environment variables to set for the Genesis server

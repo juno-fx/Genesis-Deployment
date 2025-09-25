@@ -1,0 +1,32 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: "{{ .Values.gateway.name }}"
+  namespace: "{{ .Values.gateway.namespace }}"
+spec:
+  gatewayClassName: orion-default
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+{{- if eq .Values.http_scheme "https" }}
+          from: Same
+{{- else }}
+          from: All
+{{- end }}
+{{- if eq .Values.http_scheme "https" }}
+    - name: https
+      port: 443
+      protocol: HTTPS
+      # hostname: "*.example.com"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: "{{ .Values.gateway.tlsSecretName }}"
+      allowedRoutes:
+        namespaces:
+          from: All
+{{ end }}

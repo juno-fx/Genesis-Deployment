@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "http_scheme": {
+      "type": "string",
+      "enum": ["http", "https"],
+      "description": "The scheme to use for HTTP. Must be 'http' or 'https'."
+    },
+    "pull_policy": {
+      "type": "string",
+      "pattern": "^(Always|Never|IfNotPresent)$",
+      "description": "Image pull policy"
+    },
+    "titan": {
+      "type": "object",
+      "description": "Titan configuration section",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email for the owner of the cluster"
+        },
+        "uid": {
+          "type": "integer",
+          "description": "Numeric Linux UID of the owner of the cluster"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Owner of the cluster (must be a non-empty string)"
+        }
+      },
+      "required": ["owner", "uid", "email"]
+    }
+  },
+  "required": ["pull_policy", "http_scheme", "titan"]
+}
