@@ -5,6 +5,7 @@ pull_policy: Always                         # Pull policy to use for the Genesis
 gateway:
   name: orion
   namespace: argocd
+  annotations: {}
   controllerName: "traefik.io/gateway-controller"
   tlsSecretName: orion-tls
 http_scheme: https
