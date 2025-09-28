@@ -8,7 +8,7 @@ spec:
   gatewayClassName: orion-default
   listeners:
     - name: http
-      port: 80
+      port: 8000
       protocol: HTTP
       allowedRoutes:
         namespaces:
@@ -19,7 +19,7 @@ spec:
 {{- end }}
 {{- if eq .Values.http_scheme "https" }}
     - name: https
-      port: 443
+      port: 8443
       protocol: HTTPS
       # hostname: "*.example.com"
       tls:
