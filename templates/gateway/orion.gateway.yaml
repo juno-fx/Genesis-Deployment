@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   name: "{{ .Values.gateway.name }}"
   namespace: "{{ .Values.gateway.namespace }}"
-  annotations: "{{ .Values.gateway.annotations }}"
+  annotations: {{ .Values.gateway.annotations }}
 spec:
   gatewayClassName: orion-default
   listeners:

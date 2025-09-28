@@ -6,9 +6,15 @@ gateway:
   name: orion
   namespace: argocd
   # The primary use case for gateway annotations is cert-manager - see: https://cert-manager.io/docs/usage/gateway/
-  annotations: {}
+  annotations:
   controllerName: "traefik.io/gateway-controller"
   tlsSecretName: orion-tls
+  # this gets passed down to Traefik.
+  # With its default configureation 8000 on the Traefik entrypoint will map to port 80
+  # on the externally reachable service. 8443 will practically mean 443
+  listenerPorts:
+    http: 8000
+    https: 8443
 http_scheme: https
 
 image: genesis:v2.1.0                       # Image to pull for Genesis
