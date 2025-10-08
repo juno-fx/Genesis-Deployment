@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
 {{- range $key, $value := .Values.genesis_token_creation_extra_annotations }}
-      {{ $key }}: "{{ $value }}"
+    {{ $key }}: "{{ $value }}"
 {{- end }}
 spec:
   template:
