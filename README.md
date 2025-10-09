@@ -7,7 +7,7 @@
 
 See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/feature/#2025-10-09)
 <br>
-See all the latest Technical changes via our changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/technical/#2025-10-09-genesis-v140-orion-projects-v140)
+See all the latest Technical changes via our changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/technical/#2025-10-09-genesis-v150-orion-projects-v150)
 
 ## Usage
 
