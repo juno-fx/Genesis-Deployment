@@ -8,5 +8,5 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
-    verbs: ["create"]
+    verbs: ["*"]
     resourceNames: ["juno-auth-secret"]
