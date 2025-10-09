@@ -26,4 +26,4 @@ spec:
           command: ["/create-nextauth-secret"]
           imagePullPolicy: {{ .Values.pull_policy }}
       restartPolicy: OnFailure
-      serviceAccountName: genesis
+      serviceAccountName: genesis-token-bootstrap
