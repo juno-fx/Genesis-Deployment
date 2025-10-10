@@ -9,4 +9,3 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["*"]
-    resourceNames: ["juno-auth-secret"]
