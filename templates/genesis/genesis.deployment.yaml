@@ -22,6 +22,10 @@ spec:
           {{ $key }}: "{{ $value }}"
         {{- end }}
     spec:
+      {{- if .Values.tolerations }}
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}
+      {{- end }}
       serviceAccountName: genesis
       {{- if .Values.image_pull_secret }}
       imagePullSecrets:

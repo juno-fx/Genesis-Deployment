@@ -14,7 +14,13 @@ node_selector:                              # Node selector to deploy the Genesi
 extra_annotations: {}
 genesis_token_creation_extra_annotations: {}
 
+
+# https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+# If you run powerful controlplane nodes, you can reuse them to host core Orion services.
+tolerations: []
+
 titan:
+  tolerations: []
   extra_annotations: []
   image: titan:v1.0.3                       # Image to pull for Titan
   owner: bob                                # Owner of the cluster
@@ -28,6 +34,7 @@ titan:
     max_replicas: 3                         # Maximum number of replicas to run
 
 terra:
+  tolerations: []
   extra_annotations: []
   image: terra:v1.0.4                       # Image to pull for Terra
   node_selector:                            # Node selector to deploy the Titan server to
