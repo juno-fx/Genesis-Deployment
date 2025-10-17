@@ -3,60 +3,13 @@
 
 [Read the full documentation here](https://juno-fx.github.io/Orion-Documentation/)
 
-## Deployment Chart v1.4.0
+## Deployment Chart v1.5.0
+This deployment chart includes the release images for Genesis (v2.2.1), Terra (v1.1.0), and Titan (v1.0.3)
 
-###  🚀 New Features 
+See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/feature/#2025-10-10)
+<br>
 
-- Titan Microservice Service upgraded to v1.0.3
-- Terra Microservice Service upgraded to v1.0.4
-- Genesis Service upgraded to v2.1.0
-- 
-#### Genesis
-
-- Terra App Store UI Refresh
-- Dropped restriction forcing user to hibernate project before deleting storage
-- Add k3s node provisioning and ansible credential creation via Genesis in the networking page and backend api
-- Added help steppers to multiple pages (Workstations, Users/Groups, Networking)
-- Cluster level Terra iFrame plugin dashboard support
-- Add storage validation to both the front end storage creation form and backend api
-- Allowing of user UID editing
-- Add http_scheme selection setting to project creation
-
-
-#### Terra
-- Mixed namespace support added for bundles. Bundles can now have cluster-level plugins as well as project level plugins included in a single bundle.
-- Plugin field backend schemas have been updated. This is in preparation for better front-end handling of plugin install fields.
-
-#### Titan
-- Allow editing of Titan user UID
-
-###  🐛 Bug Fixes
-
-#### Genesis
-- Ensure the front end doesn't pass terra backend an empty sub-path key-value during install
-- Fixed sizing of the Juno logo button box
-- Bugfix when updating admin group users from group table previously would be blocked. This has been fixed.
-- Fixed license banner warning sizing/placement
-
-#### Titan
-- Validating titan owner on creation to ensure valid user
-- Bugfix when updating admin group users from group backend previously would be blocked. This has been fixed.
-
-###  🧰 Maintenance
-
-#### Genesis
-- Updated license page context
-- Added ingress auth handler
-- Added/adjusted page and table loading states
-- Updated Terra source create forms autofill settings
-
-
-### 🔒 Security Update
-
-#### Genesis
-
-- We have improved upon how session secrets are generated. This better protects you against attackers attempting request forgery. While no direct attack vectors on public instances were found by our team, we still recommend updating Genesis&Hubble shortly after release. 
-
+A summary of all deprecations, migration steps between major versions and addressed security vulnerabilities is kept [in our technical changelog here](https://juno-fx.github.io/Orion-Documentation/changelogs/technical/#2025-10-10-genesis-v150-orion-projects-v150).
 
 ## Usage
 
