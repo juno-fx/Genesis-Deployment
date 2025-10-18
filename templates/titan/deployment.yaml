@@ -27,6 +27,10 @@ spec:
         app: titan
 
     spec:
+      {{- if .Values.titan.tolerations }}
+      tolerations:
+        {{- toYaml .Values.titan.tolerations | nindent 8 }}
+      {{- end }}
       serviceAccountName: titan
       nodeSelector:
         {{- range $key, $value := .Values.titan.node_selector.labels }}

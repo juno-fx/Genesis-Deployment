@@ -27,6 +27,10 @@ spec:
         app: terra
 
     spec:
+      {{- if .Values.terra.tolerations }}
+      tolerations:
+        {{- toYaml .Values.terra.tolerations | nindent 8 }}
+      {{- end }}
       serviceAccountName: terra
       nodeSelector:
         {{- range $key, $value := .Values.terra.node_selector.labels }}
