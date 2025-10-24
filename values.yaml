@@ -17,7 +17,7 @@ gateway:
     https: 8443
 http_scheme: https
 
-image: genesis:v2.2.1                       # Image to pull for Genesis
+image: genesis:staging                      # Image to pull for Genesis
 env: {}                                     # Environment variables to set for the Genesis server
 node_selector:                              # Node selector to deploy the Genesis server to
   enable: true                              # Enable node selector
@@ -43,7 +43,7 @@ titan:
 
 terra:
   extra_annotations: []
-  image: terra:v1.1.0                       # Image to pull for Terra
+  image: terra:staging                      # Image to pull for Terra
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
