@@ -12,8 +12,7 @@ spec:
       restartPolicy: OnFailure
       containers:
       - name: cert-generator
-        # ToDo: make this one of our images
-        image: bitnamilegacy/kubectl:1.33.4-debian-12-r0
+        image: {{.Values.registry}}/{{ .Values.terra.image }}
         env:
         - name: ORION_HOSTNAME
           value: "{{ .Values.host }}"
