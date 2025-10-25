@@ -2,10 +2,74 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
+    "registry": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Registry to pull the Genesis image from"
+    },
+    "host": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$",
+      "description": "Hostname to use for the Genesis ingress"
+    },
     "pull_policy": {
       "type": "string",
       "pattern": "^(Always|Never|IfNotPresent)$",
       "description": "Image pull policy"
+    },
+    "image": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9._-]+:[a-z0-9._-]+$",
+      "description": "Image to pull for Genesis (format: name:tag)"
+    },
+    "gateway": {
+      "type": "object",
+      "description": "Gateway configuration",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Gateway name"
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Gateway namespace"
+        },
+        "controllerName": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Gateway controller name"
+        },
+        "tlsSecretName": {
+          "type": "string",
+          "minLength": 1,
+          "description": "TLS secret name for gateway"
+        },
+        "autogenCert": {
+          "type": "boolean",
+          "description": "Enable automatic TLS certificate generation"
+        },
+        "listenerPorts": {
+          "type": "object",
+          "properties": {
+            "http": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "https": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            }
+          },
+          "required": ["http", "https"]
+        }
+      },
+      "required": ["name", "namespace", "controllerName", "tlsSecretName", "listenerPorts"]
     },
     "titan": {
       "type": "object",
@@ -18,16 +82,36 @@
         },
         "uid": {
           "type": "integer",
-          "description": "Numeric Linux UID of the owner of the cluster"
+          "minimum": 1000,
+          "description": "Numeric Linux UID of the owner of the cluster (1000-65535)"
         },
         "owner": {
           "type": "string",
           "minLength": 1,
           "description": "Owner of the cluster (must be a non-empty string)"
+        },
+        "image": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9._-]+:[a-z0-9._-]+$",
+          "description": "Image to pull for Titan (format: name:tag)"
         }
       },
-      "required": ["owner", "uid", "email"]
+      "required": ["owner", "uid", "email", "image"]
+    },
+    "terra": {
+      "type": "object",
+      "description": "Terra configuration section",
+      "properties": {
+        "image": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9._-]+:[a-z0-9._-]+$",
+          "description": "Image to pull for Terra (format: name:tag)"
+        }
+      },
+      "required": ["image"]
     }
   },
-  "required": ["pull_policy", "http_scheme", "titan"]
+  "required": ["registry", "host", "pull_policy", "image", "gateway", "titan", "terra"]
 }

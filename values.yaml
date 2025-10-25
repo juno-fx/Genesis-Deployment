@@ -51,5 +51,3 @@ terra:
     min_replicas: 1                         # Minimum number of replicas to run
     max_replicas: 3                         # Maximum number of replicas to run
 
-
-ingressClassName: nginx
