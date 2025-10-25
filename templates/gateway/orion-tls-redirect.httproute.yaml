@@ -1,4 +1,3 @@
-{{- if eq .Values.http_scheme "https" }}
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -14,4 +13,3 @@ spec:
           requestRedirect:
             scheme: https
             statusCode: 301
-{{- end -}}

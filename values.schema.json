@@ -2,11 +2,6 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
-    "http_scheme": {
-      "type": "string",
-      "enum": ["http", "https"],
-      "description": "The scheme to use for HTTP. Must be 'http' or 'https'."
-    },
     "pull_policy": {
       "type": "string",
       "pattern": "^(Always|Never|IfNotPresent)$",
