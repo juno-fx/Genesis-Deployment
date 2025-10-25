@@ -9,6 +9,7 @@ gateway:
   annotations:
   controllerName: "traefik.io/gateway-controller"
   tlsSecretName: orion-tls
+  autogenCert: true  # Set to false to disable automatic TLS certificate generation
   # this gets passed down to Traefik.
   # With its default configureation 8000 on the Traefik entrypoint will map to port 80
   # on the externally reachable service. 8443 will practically mean 443
