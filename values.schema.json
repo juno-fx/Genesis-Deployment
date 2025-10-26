@@ -13,6 +13,11 @@
       "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$",
       "description": "Hostname to use for the Genesis ingress"
     },
+    "http_scheme": {
+      "type": "string",
+      "enum": ["http", "https"],
+      "description": "The scheme to use for HTTP. Must be 'http' or 'https'."
+    },
     "pull_policy": {
       "type": "string",
       "pattern": "^(Always|Never|IfNotPresent)$",
@@ -113,5 +118,5 @@
       "required": ["image"]
     }
   },
-  "required": ["registry", "host", "pull_policy", "image", "gateway", "titan", "terra"]
+  "required": ["registry", "host", "pull_policy", "image", "gateway", "titan", "terra", "http_scheme"]
 }

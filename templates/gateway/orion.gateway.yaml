@@ -12,7 +12,12 @@ spec:
       protocol: HTTP
       allowedRoutes:
         namespaces:
+{{- if eq .Values.http_scheme "https" }}
           from: Same
+{{- else }}
+          from: All
+{{- end }}
+{{- if eq .Values.http_scheme "https" }}
     - name: https
       port: 8443
       protocol: HTTPS
@@ -25,3 +30,4 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+{{ end }}

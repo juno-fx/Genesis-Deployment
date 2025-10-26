@@ -16,6 +16,7 @@ gateway:
   listenerPorts:
     http: 8000
     https: 8443
+http_scheme: https
 
 image: genesis:staging                      # Image to pull for Genesis
 env: {}                                     # Environment variables to set for the Genesis server
