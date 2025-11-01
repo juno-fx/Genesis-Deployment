@@ -40,6 +40,11 @@ terra:
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
+  resources:
+    requests:
+      cpu: 500m
+      memory: 200Mi
+    limits: {}
   autoscaling:
     min_replicas: 1                         # Minimum number of replicas to run
     max_replicas: 3                         # Maximum number of replicas to run
