@@ -1,4 +1,2 @@
 .values.yaml
-.devbox/
-.ansible/
-.tmp-schemas/
+.devbox

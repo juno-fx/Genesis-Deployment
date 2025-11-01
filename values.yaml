@@ -2,21 +2,6 @@ registry: junoinnovations                   # Registry to pull the Genesis image
 image_pull_secret:                          # Image pull secret to use for the project. This is the name of the secret in the namespace
 host:                                       # Hostname to use for the Genesis ingress
 pull_policy: Always                         # Pull policy to use for the Genesis image
-gateway:
-  name: orion
-  namespace: argocd
-  # The primary use case for gateway annotations is cert-manager - see: https://cert-manager.io/docs/usage/gateway/
-  annotations:
-  controllerName: "traefik.io/gateway-controller"
-  tlsSecretName: orion-tls
-  autogenCert: true  # Set to false to disable automatic TLS certificate generation
-  # this gets passed down to Traefik.
-  # With its default configureation 8000 on the Traefik entrypoint will map to port 80
-  # on the externally reachable service. 8443 will practically mean 443
-  listenerPorts:
-    http: 8000
-    https: 8443
-http_scheme: https
 
 image: genesis:v2.2.2                       # Image to pull for Genesis
 env: {}                                     # Environment variables to set for the Genesis server
@@ -51,7 +36,7 @@ titan:
 terra:
   tolerations: []
   extra_annotations: []
-  image: terra:staging                      # Image to pull for Terra
+  image: terra:v1.1.0                       # Image to pull for Terra
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
@@ -59,3 +44,5 @@ terra:
     min_replicas: 1                         # Minimum number of replicas to run
     max_replicas: 3                         # Maximum number of replicas to run
 
+
+ingressClassName: nginx
