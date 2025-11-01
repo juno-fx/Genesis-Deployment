@@ -44,10 +44,17 @@ spec:
         - name: terra
           imagePullPolicy: {{ .Values.pull_policy }}
           image: {{.Values.registry}}/{{ .Values.terra.image }}
+          {{- if .Values.terra.resources }}
           resources:
+            {{- if .Values.terra.resources.requests }}
             requests:
-              cpu: 2000m
-              memory: 400Mi
+              {{- toYaml .Values.terra.resources.requests | nindent 14 }}
+            {{- end }}
+            {{- if .Values.terra.resources.limits }}
+            limits:
+              {{- toYaml .Values.terra.resources.limits | nindent 14 }}
+            {{- end }}
+          {{- end }}
           ports:
             - containerPort: 8000
               name: endpoint
