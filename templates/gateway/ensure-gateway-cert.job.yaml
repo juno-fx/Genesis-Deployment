@@ -1,0 +1,27 @@
+{{- if .Values.gateway.autogenCert }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ensure-gateway-cert
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      serviceAccountName: argocd-application-controller
+      restartPolicy: OnFailure
+      containers:
+      - name: cert-generator
+        image: {{.Values.registry}}/{{ .Values.terra.image }}
+        env:
+        - name: ORION_HOSTNAME
+          value: "{{ .Values.host }}"
+        - name: ORION_TLS_SECRET
+          value: "{{ .Values.gateway.tlsSecretName }}"
+        command:
+          - /bin/bash
+          - -c
+          - |
+{{ .Files.Get "files/gateway/ensure-gateway-cert.sh" | indent 12 }}
+{{- end }}
