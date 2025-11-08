@@ -1,2 +1,4 @@
 .values.yaml
 .devbox
+
+.hack/bin/cedar
