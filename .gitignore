@@ -2,3 +2,5 @@
 .devbox
 
 .hack/bin/cedar
+.hack/.crates2.json
+.hack/.crates.toml
