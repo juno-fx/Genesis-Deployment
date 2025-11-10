@@ -3,13 +3,13 @@
 
 [Read the full documentation here](https://juno-fx.github.io/Orion-Documentation/)
 
-## Deployment Chart v1.6.0
-This deployment chart includes the release images for Genesis (v2.2.2)
+## Deployment Chart v1.7.0
+This deployment chart includes the release images for Genesis (v2.3.0), Titan (v1.1.0), and Terra (v1.1.0)
 
-See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/feature/#2025-10-25)
+See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/feature/#2025-11-11)
 <br>
 
-A summary of all deprecations, migration steps between major versions and addressed security vulnerabilities is kept [in our technical changelog here](https://juno-fx.github.io/Orion-Documentation/changelogs/technical/#2025-10-25-genesis-v160).
+A summary of all deprecations, migration steps between major versions and addressed security vulnerabilities is kept [in our technical changelog here](https://juno-fx.github.io/Orion-Documentation/changelogs/technical/#2025-11-11-genesis-v170).
 
 ## Usage
 
