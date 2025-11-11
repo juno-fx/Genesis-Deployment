@@ -4,7 +4,7 @@
 [Read the full documentation here](https://juno-fx.github.io/Orion-Documentation/)
 
 ## Deployment Chart v1.7.0
-This deployment chart includes the release images for Genesis (v2.3.0), Titan (v1.1.0), and Terra (v1.1.0)
+This deployment chart includes the release images for Genesis (v2.3.1), Titan (v1.1.0), and Terra (v1.1.0)
 
 See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/changelogs/feature/#2025-11-11)
 <br>
