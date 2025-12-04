@@ -7,7 +7,15 @@ permit (
      Action::"DELETE",
      Action::"PATCH"],
   resource == argocd::Service::"titan"
-);
+)
+when
+{
+  principal.serviceAccountName == "genesis" ||
+  principal.serviceAccountName == "hubble" ||
+  principal.serviceAccountName == "kuiper" ||
+  principal.serviceAccountName == "titan" ||
+  principal.serviceAccountName == "terra"
+};
 
 permit (
   principal,
@@ -18,7 +26,15 @@ permit (
      Action::"DELETE",
      Action::"PATCH"],
   resource == argocd::Service::"terra"
-);
+)
+when
+{
+  principal.serviceAccountName == "genesis" ||
+  principal.serviceAccountName == "hubble" ||
+  principal.serviceAccountName == "kuiper" ||
+  principal.serviceAccountName == "titan" ||
+  principal.serviceAccountName == "terra"
+};
 
 permit (
   principal,
@@ -29,4 +45,12 @@ permit (
      Action::"DELETE",
      Action::"PATCH"],
   resource == argocd::Service::"genesis"
-);
+)
+when
+{
+  principal.serviceAccountName == "genesis" ||
+  principal.serviceAccountName == "hubble" ||
+  principal.serviceAccountName == "kuiper" ||
+  principal.serviceAccountName == "titan" ||
+  principal.serviceAccountName == "terra"
+};

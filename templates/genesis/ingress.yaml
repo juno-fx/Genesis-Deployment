@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: genesis-ingress
   namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/auth-url: "http://genesis.{{ .Release.Namespace }}.svc.cluster.local:3000/api/socket-auth/"
 spec:
   ingressClassName: {{ .Values.ingressClassName }}
   rules:
