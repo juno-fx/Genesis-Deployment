@@ -9,7 +9,7 @@ This deployment chart includes the release images for Genesis (v2.3.2), Titan (v
 See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/latest/changelogs/feature/#2025-12-05)
 <br>
 
-A summary of all deprecations, migration steps between major versions and addressed security vulnerabilities is kept [in our technical changelog here](https://juno-fx.github.io/Orion-Documentation/latestl/changelogs/technical/#2025-12-05-genesis-v171-orion-projects-v161).
+A summary of all deprecations, migration steps between major versions and addressed security vulnerabilities is kept [in our technical changelog here](https://juno-fx.github.io/Orion-Documentation/latest/changelogs/technical/#2025-12-05-genesis-v171-orion-projects-v162).
 
 ## Usage
 
