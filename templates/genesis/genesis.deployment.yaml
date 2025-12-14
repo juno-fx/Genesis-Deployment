@@ -67,6 +67,8 @@ spec:
         - name: rhea
           image: {{ .Values.registry }}/{{ .Values.rhea.image }}
           imagePullPolicy: {{ .Values.pull_policy }}
+          env:
+            {{- toYaml .Values.rhea.env | nindent 12 }}
           ports:
             - containerPort: 13000
               name: auth

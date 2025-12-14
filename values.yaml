@@ -51,6 +51,7 @@ terra:
 
 rhea:
   image: rhea:unstable                      # Image to pull for Rhea
+  env: {}                                   # Environment variables to set for Rhea
   resources:
     requests:
       cpu: 200m
