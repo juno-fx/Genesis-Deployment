@@ -68,6 +68,18 @@ spec:
             - name: policies
               mountPath: /etc/rhea/policies
               readOnly: true
+          livenessProbe:
+            httpGet:
+              path: /.health
+              port: 13000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /.health
+              port: 13000
+            initialDelaySeconds: 5
+            periodSeconds: 10
       volumes:
         - name: policies
           configMap:
