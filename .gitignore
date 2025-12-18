@@ -4,3 +4,4 @@
 .hack/bin/cedar
 .hack/.crates2.json
 .hack/.crates.toml
+files/genesis/roles/**
