@@ -2,19 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
   "packages": [
     "kind@0.23.0",
+    "cargo@latest",
     "docker@latest",
+    "kubeconform@0.7.0",
     "kubectl@latest",
+    "kubernetes-helm@3.16.4",
     "gnumake@latest",
-    "cargo@latest"
-  ],
-  "shell": {
-    "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
-    ],
-    "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
-      ]
-    }
-  }
+    "ansible-lint@25.8.2",
+    "shellcheck@0.11.0",
+    "yq@3.4.3"
+  ]
 }
