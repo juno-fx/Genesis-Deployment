@@ -1,9 +1,9 @@
-name: Lint
+name: Lint kubernetes manifests in the rendered chart
 on:
   push:
 jobs:
   lint:
-    name: Lint
+    name: Lint kubernetes manifests in the rendered chart
     runs-on: X64
     steps:
       - name: Checkout
@@ -11,4 +11,4 @@ jobs:
       - name: Run the lint target
         shell: bash
         run: |
-          devbox run make lint
+          devbox run make lint-kubernetes

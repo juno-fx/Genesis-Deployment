@@ -1,0 +1,22 @@
+name: Release the chart to ECR
+on:
+  push:
+    paths:
+      - "Chart.yaml"
+
+jobs:
+  release:
+    name: Release the chart to ECR
+    runs-on: X64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registries: "709825985650"
+      - name: Package and Push Chart to ECR
+        shell: bash
+        run: |
+          devbox run make publish-ecr

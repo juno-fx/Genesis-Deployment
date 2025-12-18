@@ -4,11 +4,27 @@ PROJECT="genesis"
 .hack/bin/cedar:
 	@cargo install cedar-policy-cli --root .hack
 
+publish-ecr:
+	rm -f orion-genesis*tgz
+	sed -i "s|registry:.*|registry: 709825985650.dkr.ecr.us-east-1.amazonaws.com/juno-innovations|g" values.yaml
+	helm package .
+	helm push orion-genesis*tgz oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/juno-innovations/
+
 format: .hack/bin/cedar
 	@.hack/bin/cedar format --write -p files/rhea/policies.cedar
 
-lint: .hack/bin/cedar
-	.hack/bin/cedar format --check -p files/rhea/policies.cedar
+lint: lint-kubernetes lint-cedar lint-ansible lint-scripts
+
+lint-ansible:
+	ansible-lint files/genesis/juno-playbook-k3s-provision.yml
+lint-cedar: .hack/bin/cedar
+	@.hack/bin/cedar format --check -p files/rhea/policies.cedar
+
+lint-kubernetes:
+	@.hack/lint-kube.sh
+
+lint-scripts:
+	@shellcheck .hack/*sh
 
 # targets
 cluster:
