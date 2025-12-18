@@ -10,4 +10,4 @@
     k3s_binary_url: "file:///install_files/k3s"
     k3s_install_script_url: "file:///install_files/k3s_install.sh"
   roles:
-    - name: juno-fx.juno_k3s
+    - role: juno-fx.juno_k3s
