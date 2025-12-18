@@ -16,6 +16,9 @@ format: .hack/bin/cedar
 lint: lint-kubernetes lint-cedar lint-ansible lint-scripts
 
 lint-ansible:
+	# ansible-lint rules seem to be unable to ignore just the import - working around that..
+	mkdir -p files/genesis/roles/juno-fx.juno_k3s/{tasks,meta}
+	touch files/genesis/roles/juno-fx.juno_k3s/tasks/main.yml
 	ansible-lint files/genesis/juno-playbook-k3s-provision.yml
 lint-cedar: .hack/bin/cedar
 	@.hack/bin/cedar format --check -p files/rhea/policies.cedar
