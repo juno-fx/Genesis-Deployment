@@ -43,7 +43,7 @@ spec:
       containers:
         - name: titan
           imagePullPolicy: {{ .Values.pull_policy }}
-          image: {{.Values.registry}}/{{ .Values.titan.image }}
+          image: "{{ .Values.global.registry }}/{{ .Values.titan.image.repository }}:{{ .Values.titan.image.tag }}"
           env:
             - name: ORION_OWNER
               value: {{ .Values.titan.owner }}
@@ -59,7 +59,7 @@ spec:
             - containerPort: 8000
               name: endpoint
         - name: rhea
-          image: {{ .Values.registry }}/{{ .Values.rhea.image }}
+          image: "{{ .Values.global.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           {{- with .Values.rhea.env }}
           env:
