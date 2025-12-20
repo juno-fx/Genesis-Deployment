@@ -1,5 +1,7 @@
+global:
+  registry: "junoinnovations"                               # Global registry to use for all images if not overridden
+
 image:
-  registry: junoinnovations
   repository: "genesis"
   tag: "v2.3.1"
 image_pull_secret:                          # Image pull secret to use for the project. This is the name of the secret in the namespace
@@ -24,7 +26,6 @@ titan:
   tolerations: []
   extra_annotations: []
   image:
-    registry: junoinnovations
     repository: "titan"
     tag: "v1.1.0"
   owner: bob                                # Owner of the cluster
@@ -41,7 +42,6 @@ terra:
   tolerations: []
   extra_annotations: []
   image:
-    registry: junoinnovations
     repository: "terra"
     tag: "v1.1.0"
   node_selector:                            # Node selector to deploy the Titan server to
@@ -58,7 +58,6 @@ terra:
 
 rhea:
   image:
-    registry: junoinnovations
     repository: "rhea"
     tag: "v0.0.1"
   env: {}                                   # Environment variables to set for Rhea

@@ -39,7 +39,7 @@ spec:
       {{- end }}
       containers:
         - name: genesis
-          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
             - name: AUTH_SECRET
@@ -65,7 +65,7 @@ spec:
             - containerPort: 8000
               name: backend
         - name: rhea
-          image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
+          image: "{{ .Values.global.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           {{- with .Values.rhea.env }}
           env:
