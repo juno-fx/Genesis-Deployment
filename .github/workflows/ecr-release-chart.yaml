@@ -1,6 +1,9 @@
 name: Release the chart to ECR
 on:
   push:
+    branches:
+      - main
+      - v*
     paths:
       - "Chart.yaml"
 
