@@ -59,7 +59,7 @@ terra:
 rhea:
   image:
     repository: "rhea"
-    tag: "untable"
+    tag: "unstable"
   env: {}                                   # Environment variables to set for Rhea
   resources:
     requests:
