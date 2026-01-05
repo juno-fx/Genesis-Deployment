@@ -59,7 +59,7 @@ terra:
 rhea:
   image:
     repository: "rhea"
-    tag: "v0.0.1"
+    tag: "v1.0.0"
   env: {}                                   # Environment variables to set for Rhea
   resources:
     requests:
