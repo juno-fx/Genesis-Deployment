@@ -3,7 +3,7 @@ global:
 
 image:
   repository: "genesis"
-  tag: "v2.3.1"
+  tag: "v3.0.0"
 image_pull_secret:                          # Image pull secret to use for the project. This is the name of the secret in the namespace
 host:                                       # Hostname to use for the Genesis ingress
 pull_policy: Always                         # Pull policy to use for the Genesis image
@@ -27,7 +27,7 @@ titan:
   extra_annotations: []
   image:
     repository: "titan"
-    tag: "v1.1.0"
+    tag: "v2.0.0"
   owner: bob                                # Owner of the cluster
   email: test@email.com                     # Email for the owner of the cluster
   uid: 1005                                 # UID of the owner of the cluster
@@ -43,7 +43,7 @@ terra:
   extra_annotations: []
   image:
     repository: "terra"
-    tag: "v1.1.0"
+    tag: "v2.0.0"
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
