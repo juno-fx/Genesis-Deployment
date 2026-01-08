@@ -43,7 +43,7 @@ spec:
       containers:
         - name: titan
           imagePullPolicy: {{ .Values.pull_policy }}
-          image: {{.Values.registry}}/{{ .Values.titan.image }}
+          image: "{{ .Values.global.registry }}/{{ .Values.titan.image.repository }}:{{ .Values.titan.image.tag }}"
           env:
             - name: ORION_OWNER
               value: {{ .Values.titan.owner }}
@@ -58,3 +58,33 @@ spec:
           ports:
             - containerPort: 8000
               name: endpoint
+        - name: rhea
+          image: "{{ .Values.global.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
+          imagePullPolicy: {{ .Values.pull_policy }}
+          {{- with .Values.rhea.env }}
+          env:
+            {{- toYaml .Values.rhea.env | nindent 12 }}
+          {{- end }}
+          ports:
+            - containerPort: 13000
+              name: auth
+          volumeMounts:
+            - name: policies
+              mountPath: /etc/rhea/policies
+              readOnly: true
+          livenessProbe:
+            httpGet:
+              path: /.health
+              port: 13000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /.health
+              port: 13000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: policies
+          configMap:
+            name: orion-systempolicy
