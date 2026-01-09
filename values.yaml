@@ -1,7 +1,7 @@
 image:
   registry: "junoinnovations"
   repository: "genesis"
-  tag: "v3.0.0"
+  tag: "v3.0.1"
 image_pull_secret:                          # Image pull secret to use for the project. This is the name of the secret in the namespace
 host:                                       # Hostname to use for the Genesis ingress
 pull_policy: Always                         # Pull policy to use for the Genesis image
