@@ -43,7 +43,7 @@ spec:
       containers:
         - name: terra
           imagePullPolicy: {{ .Values.pull_policy }}
-          image: "{{ .Values.global.registry }}/{{ .Values.terra.image.repository }}:{{ .Values.terra.image.tag }}"
+          image: "{{ .Values.terra.image.registry }}/{{ .Values.terra.image.repository }}:{{ .Values.terra.image.tag }}"
           {{- if .Values.terra.resources }}
           resources:
             {{- if .Values.terra.resources.requests }}
@@ -59,7 +59,7 @@ spec:
             - containerPort: 8000
               name: endpoint
         - name: rhea
-          image: "{{ .Values.global.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
+          image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           {{- with .Values.rhea.env }}
           env:

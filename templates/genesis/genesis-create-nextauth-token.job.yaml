@@ -22,7 +22,7 @@ spec:
       {{- end }}
       containers:
         - name: generate-nextauth-token
-          image: "{{ .Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           command: ["/create-nextauth-secret"]
           imagePullPolicy: {{ .Values.pull_policy }}
       restartPolicy: OnFailure
