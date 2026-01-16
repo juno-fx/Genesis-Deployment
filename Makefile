@@ -10,6 +10,9 @@ publish-ecr:
 	helm package .
 	helm push orion-genesis*tgz oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/juno-innovations/
 
+print-ecr-image-versions:
+	@.hack/print-ecr-image-versions.sh
+
 format: .hack/bin/cedar
 	@.hack/bin/cedar format --write -p files/rhea/policies.cedar
 
