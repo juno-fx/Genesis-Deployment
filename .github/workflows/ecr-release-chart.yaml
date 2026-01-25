@@ -14,6 +14,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install Actions
+        uses: actions/checkout@v4
+        with:
+          repository: juno-fx/ci
+          ref: main
+          path: juno-ci
+          clean: false
+          token: ${{ secrets.GIT_PASS }}
+      - uses: ./juno-ci/actions/runners/tooling
+        name: Prepare Runner
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
