@@ -70,4 +70,5 @@ rhea:
       cpu: 350m
       memory: 250Mi
 
-ingressClassName: nginx
+# ingressClassName: removed - use cluster default to make controller-agnostic
+ingressController: nginx  # Options: nginx | traefik | cilium

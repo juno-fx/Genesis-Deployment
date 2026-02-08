@@ -41,7 +41,7 @@ down:
 
 argocd:
 	@kubectl create namespace argocd || echo "Argo namespace already exists..."
-	@kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+	@kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml || echo "ArgoCD already installed..."
 	@sleep 15
 	@kubectl wait --namespace argocd \
 		--for=condition=ready pod \
@@ -49,17 +49,36 @@ argocd:
 		--timeout=90s
 
 ingress:
-	@echo "Installing NGINX Ingress..."
-	@kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-	@sleep 15
-	@kubectl wait --namespace ingress-nginx \
-		--for=condition=ready pod \
-		--selector=app.kubernetes.io/component=controller \
-		--timeout=90s
+	@echo "Installing Ingress Controller: $(INGRESS_CONTROLLER)..."
+	@if [ "$(INGRESS_CONTROLLER)" = "cilium" ]; then \
+		echo "Installing Cilium Gateway API support..."; \
+		# Note: Cilium typically uses Gateway API, no additional ingress installation needed; \
+	elif [ "$(INGRESS_CONTROLLER)" = "traefik" ]; then \
+		echo "Installing Traefik with NGINX annotation support..."; \
+			helm repo add traefik https://traefik.github.io/charts || true; \
+			helm repo update; \
+			helm upgrade --install traefik traefik/traefik \
+				--namespace traefik --create-namespace \
+				--set providers.kubernetesIngressNginx.enabled=true \
+				--set service.type=NodePort; \
+			sleep 15; \
+			kubectl wait --namespace traefik \
+				--for=condition=ready pod \
+				--selector=app.kubernetes.io/name=traefik \
+				--timeout=90s; \
+	else \
+		echo "Installing NGINX Ingress..."; \
+			kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml; \
+			sleep 15; \
+			kubectl wait --namespace ingress-nginx \
+				--for=condition=ready pod \
+				--selector=app.kubernetes.io/component=controller \
+				--timeout=90s; \
+	fi
 
 genesis: cluster ingress argocd
 	@echo "Installing Genesis..."
-	@helm upgrade -i -f .values.yaml $(PROJECT) ./
+	@helm upgrade -n argocd -i -f .values.yaml $(PROJECT) ./
 	@echo "Waiting for Genesis to settle..."
 	@sleep 10
 	@kubectl wait --namespace argocd \

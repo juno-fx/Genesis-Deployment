@@ -1,12 +1,12 @@
+{{ if eq .Values.ingressController "nginx" }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: genesis-ingress
-  namespace: argocd
+  namespace: {{ .Release.Namespace }}
   annotations:
     nginx.ingress.kubernetes.io/auth-url: "http://genesis.{{ .Release.Namespace }}.svc.cluster.local:3000/api/socket-auth/"
 spec:
-  ingressClassName: {{ .Values.ingressClassName }}
   rules:
     - host: {{ .Values.host }}
       http:
@@ -25,3 +25,4 @@ spec:
                 name: genesis
                 port:
                   number: 8000
+{{ end }}
