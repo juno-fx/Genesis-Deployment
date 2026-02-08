@@ -14,7 +14,7 @@ metadata:
   name: genesis-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: "genesis-auth-middleware@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "{{ .Release.Namespace }}-genesis-auth-middleware@kubernetescrd"
 spec:
   rules:
     - host: {{ .Values.host }}
