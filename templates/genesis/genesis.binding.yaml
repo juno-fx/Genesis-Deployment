@@ -11,3 +11,16 @@ subjects:
   - kind: ServiceAccount
     name: genesis
     namespace: argocd
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rhea-global-configmap-binding
+subjects:
+  - kind: ServiceAccount
+    name: genesis
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: configmap-reader-global
+  apiGroup: rbac.authorization.k8s.io
