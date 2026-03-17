@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Install Actions
         uses: actions/checkout@v4
         with:
@@ -22,13 +23,20 @@ jobs:
           path: juno-ci
           clean: false
           token: ${{ secrets.GIT_PASS }}
+
       - uses: ./juno-ci/actions/runners/tooling
         name: Prepare Runner
+        with:
+          key: ${{ secrets.AWS_ACCESS }}
+          secret: ${{ secrets.AWS_SECRET }}
+          region: ${{ secrets.AWS_REGION }}
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
         with:
           registries: "709825985650"
+
       - name: Package and Push Chart to ECR
         shell: bash
         run: |
