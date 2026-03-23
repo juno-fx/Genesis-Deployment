@@ -7,7 +7,7 @@ permit (
 
 // These are wide open
 permit (principal, action, resource)
-when { context.url like "*/projects*" || context.url like "*/home*" };
+when { context.url like "*/projects/" || context.url like "*/home/" };
 
 permit (
   principal in Group::"kuiper",
