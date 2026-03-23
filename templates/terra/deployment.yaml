@@ -82,11 +82,3 @@ spec:
             periodSeconds: 10
           resources:
             {{- toYaml .Values.rhea.resources | nindent 12 }}
-          volumeMounts:
-            - name: policies
-              mountPath: /etc/rhea/policies
-              readOnly: true
-      volumes:
-        - name: policies
-          configMap:
-            name: orion-systempolicy
