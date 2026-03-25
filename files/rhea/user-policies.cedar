@@ -23,7 +23,7 @@ permit (
 )
 when
 {
-  context.url like "*/genesis*" &&
+  context.url like "*/genesis/workload*" &&
   !(context.url like "*/genesis/ansible*") &&
   !(context.url like "*/genesis/node/provision*")
 };
