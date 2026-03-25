@@ -21,22 +21,22 @@ permit (
   action,
   resource
 )
+when { context.url like "*/genesis/*" };
+
+forbid (
+  principal in Group::"kuiper",
+  action,
+  resource
+)
 when
 {
-  context.url like "*/genesis/*" &&
-  !(context.url like "*/genesis/ansible") &&
-  !(context.url like "*/genesis/ansible*") &&
-  !(context.url like "*/genesis/projects") &&
-  !(context.url like "*/genesis/projects*") &&
-  !(context.url like "*/genesis/storage") &&
-  !(context.url like "*/genesis/storage*") &&
-  !(context.url like "*/genesis/network") &&
-  !(context.url like "*/genesis/network*") &&
-  !(context.url like "*/genesis/license") &&
-  !(context.url like "*/genesis/license*") &&
-  !(context.url like "*/genesis/services") &&
-  !(context.url like "*/genesis/services*") &&
-  !(context.url like "*/genesis/node/provision*")
+  context.url like "*/genesis/ansible*" ||
+  context.url like "*/genesis/projects*" ||
+  context.url like "*/genesis/storage*" ||
+  context.url like "*/genesis/network*" ||
+  context.url like "*/genesis/license*" ||
+  context.url like "*/genesis/services*" ||
+  context.url like "*/genesis/node/provision*"
 };
 
 permit (
