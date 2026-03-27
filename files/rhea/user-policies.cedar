@@ -36,7 +36,7 @@ when
   context.url like "*/genesis/network*" ||
   context.url like "*/genesis/license*" ||
   context.url like "*/genesis/services*" ||
-  context.url like "*/genesis/node/provision*"
+  context.url like "*/genesis/nodes*"
 };
 
 permit (
