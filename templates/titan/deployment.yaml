@@ -68,10 +68,6 @@ spec:
           ports:
             - containerPort: 13000
               name: auth
-          volumeMounts:
-            - name: policies
-              mountPath: /etc/rhea/policies
-              readOnly: true
           livenessProbe:
             httpGet:
               path: /.health
@@ -84,7 +80,3 @@ spec:
               port: 13000
             initialDelaySeconds: 5
             periodSeconds: 10
-      volumes:
-        - name: policies
-          configMap:
-            name: orion-systempolicy
