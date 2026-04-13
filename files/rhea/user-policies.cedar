@@ -14,8 +14,23 @@ permit (
   action,
   resource
 )
-when { context.url like "*/genesis/workload*" || context.url like "*/workloads*" || context.url like "*/genesis/docs*" };
+when { context.url like "*/genesis/*" || context.url like "*/workloads*" };
 
+forbid (
+  principal in Group::"kuiper",
+  action,
+  resource
+)
+when
+{
+  context.url like "*/genesis/ansible*" ||
+  context.url like "*/genesis/projects*" ||
+  context.url like "*/genesis/storage*" ||
+  context.url like "*/genesis/network*" ||
+  context.url like "*/genesis/license*" ||
+  context.url like "*/genesis/services*" ||
+  context.url like "*/genesis/nodes*"
+};
 permit (
   principal in Group::"titan",
   action,
