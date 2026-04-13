@@ -14,7 +14,7 @@ permit (
   action,
   resource
 )
-when { context.url like "*/genesis/workload*" || context.url like "*/workloads*" };
+when { context.url like "*/genesis/workload*" || context.url like "*/workloads*" || context.url like "*/genesis/docs*" };
 
 permit (
   principal in Group::"titan",
