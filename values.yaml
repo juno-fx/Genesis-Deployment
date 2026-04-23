@@ -60,7 +60,7 @@ rhea:
   image:
     registry: "junoinnovations"
     repository: "rhea"
-    tag: "v1.0.0"
+    tag: "v1.2.0"
   env: {}                                   # Environment variables to set for Rhea
   resources:
     requests:
