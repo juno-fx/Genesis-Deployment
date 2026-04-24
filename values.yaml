@@ -60,7 +60,7 @@ rhea:
   image:
     registry: "junoinnovations"
     repository: "rhea"
-    tag: "v1.2.0"
+    tag: "1067-feat-post-backend-permission-fixes"
   env: {}                                   # Environment variables to set for Rhea
   resources:
     requests:
