@@ -18,8 +18,7 @@ when { context.url like "*/genesis/*" || context.url like "*/workloads*" };
 
 forbid (principal, action, resource)
 when {
-    context.url like "*/home/*" &&
-    !(context.url like "*/home/projects/")
+    context.url like "*/home/workloads/"
 }
 unless {
     principal in Group::"admin" ||
