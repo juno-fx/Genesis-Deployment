@@ -69,6 +69,8 @@ spec:
           imagePullPolicy: {{ .Values.pull_policy }}
           {{- with .Values.rhea.env }}
           env:
+            - name: NAMESPACED
+              value: "true"
             {{- toYaml .Values.rhea.env | nindent 12 }}
           {{- end }}
           ports:
