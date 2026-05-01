@@ -16,15 +16,6 @@ permit (
 )
 when { context.url like "*/genesis/*" || context.url like "*/workloads*" };
 
-forbid (principal, action, resource)
-when {
-    context.url like "*/home/workloads/"
-}
-unless {
-    principal in Group::"admin" ||
-    principal in Group::"kuiper"
-};
-
 forbid (
   principal in Group::"kuiper",
   action,
