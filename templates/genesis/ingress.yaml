@@ -25,7 +25,3 @@ spec:
                 name: genesis
                 port:
                   number: 8000
-  tls: 
-    - hosts:                                                                       
-        - {{ .Values.host }}
-      secretName: ingress-certificate
