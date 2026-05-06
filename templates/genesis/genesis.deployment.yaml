@@ -55,6 +55,10 @@ spec:
             - name: IMAGE_PULL_SECRET
               value: {{ .Values.image_pull_secret }}
           {{- end }}
+          {{- if .Values.aws_marketplace.enabled }}
+            - name: AWS_MARKET_PLACE
+              value: "true"
+          {{- end }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: {{ $value }}
