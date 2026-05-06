@@ -14,7 +14,7 @@ node_selector:                              # Node selector to deploy the Genesi
 # Primarily used for Juno-internal development to inject annotations to resources
 extra_annotations: {}
 genesis_token_creation_extra_annotations: {}
-
+aws_marketplace: {}
 
 # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 # If you run powerful controlplane nodes, you can reuse them to host core Orion services.
