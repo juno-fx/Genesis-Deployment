@@ -57,7 +57,7 @@ spec:
           {{- end }}
           {{- if .Values.aws_marketplace.enabled }}
             - name: AWS_MARKET_PLACE
-              value: true
+              value: "true"
           {{- end }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
