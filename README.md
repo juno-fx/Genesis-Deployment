@@ -4,7 +4,7 @@
 [Read the full documentation here](https://juno-fx.github.io/Orion-Documentation/genesis4.0.0-orion4.0.0)
 
 ## Deployment Chart v4.0.0
-This deployment chart includes the release images for Genesis (v5.0.0), Titan (v2.1.2), Terra (v2.1.1), and Rhea (v1.2.3)
+This deployment chart includes the release images for Genesis (v5.0.1), Titan (v2.1.2), Terra (v2.1.1), and Rhea (v1.2.3)
 
 See all the latest feature changes via our Changelogs [here](https://juno-fx.github.io/Orion-Documentation/genesis4.0.0-orion4.0.0/changelogs/feature/#2026-05-11)
 <br>
