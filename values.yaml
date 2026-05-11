@@ -60,8 +60,10 @@ rhea:
   image:
     registry: "junoinnovations"
     repository: "rhea"
-    tag: "v1.0.0"
-  env: {}                                   # Environment variables to set for Rhea
+    tag: "v1.2.3"
+  env: 
+    - name: NAMESPACED
+      value: "true"                                   # Environment variables to set for Rhea
   resources:
     requests:
       cpu: 200m
