@@ -7,6 +7,7 @@ PROJECT="genesis"
 publish-ecr:
 	rm -f orion-genesis*tgz
 	sed -i "s|registry:.*|registry: 709825985650.dkr.ecr.us-east-1.amazonaws.com/juno-innovations|g" values.yaml
+	sed -i "s|orion-genesis|orion-genesis-ecr|g" Chart.yaml
 	sed -i 's|repository: "\(.*\)"|repository: "\1-ecr"|g' values.yaml
 	helm package .
 	helm push orion-genesis*tgz oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/juno-innovations/
