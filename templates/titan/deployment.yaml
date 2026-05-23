@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: titan
   namespace: argocd
+  labels:
+    juno-innovations.com/service-deployment: "titan"
 spec:
   revisionHistoryLimit: 0
   selector:
