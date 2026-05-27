@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: genesis
   namespace: argocd
+  labels:
+   juno-innovations.com/service-deployment: "genesis"
   annotations:
 {{- range $key, $value := .Values.extra_annotations }}
     {{ $key }}: "{{ $value }}"
