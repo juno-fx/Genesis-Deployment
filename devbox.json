@@ -6,7 +6,7 @@
     "docker@latest",
     "kubeconform@0.7.0",
     "kubectl@latest",
-    "kubernetes-helm@3.16.4",
+    "kubernetes-helm@3.19.0",
     "gnumake@latest",
     "ansible-lint@25.8.2",
     "shellcheck@0.11.0",
