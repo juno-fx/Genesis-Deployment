@@ -49,10 +49,10 @@ spec:
           image: "{{ .Values.metricsGatherer.image.registry }}/{{ .Values.metricsGatherer.image.repository }}:{{ .Values.metricsGatherer.image.tag }}"
           {{- if .Values.metricsGatherer.resources }}
           env:
-            {{- range .Values.metricsGatherer.env }}
-              - name: {{ .name | quote }}
-                value: {{ .value | quote }}
-            {{- end }}
+          {{- range .Values.metricsGatherer.env }}
+            - name: {{ .name | quote }}
+              value: {{ .value | quote }}
+          {{- end }}
           resources:
             {{- if .Values.metricsGatherer.resources.requests }}
             requests:
