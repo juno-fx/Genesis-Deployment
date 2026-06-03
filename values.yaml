@@ -59,6 +59,7 @@ terra:
 metricsGatherer:
   tolerations: []
   extra_annotations: []
+  env: {}
   image:
     registry: "junoinnovations"
     repository: "metrics-gatherer"
