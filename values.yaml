@@ -63,7 +63,7 @@ metricsGatherer:
   image:
     registry: "junoinnovations"
     repository: "metrics-gatherer"
-    tag: "8-feat-licensing-rework-metric-gathering-to-not-use-metric-server-plugin"
+    tag: "v0.0.1"
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
