@@ -4,7 +4,7 @@ metadata:
   name: metrics-gatherer
   namespace: argocd
   labels:
-    metrics: true
+    metrics: "enabled"
 spec:
   selector:
     app: metrics-gatherer
