@@ -3,11 +3,13 @@ kind: Service
 metadata:
   name: metrics-gatherer
   namespace: argocd
+  labels:
+    metrics: true
 spec:
   selector:
     app: metrics-gatherer
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 13001
+      targetPort: 13001
       protocol: TCP
-      name: backend
+      name: metrics
