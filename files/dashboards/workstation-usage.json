@@ -678,7 +678,7 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": ["kuiper", "juno", "workstation"],
     "timeSettings": {
       "timezone": "browser",
       "from": "now-6h",
@@ -699,7 +699,7 @@
       "hideTimepicker": false,
       "fiscalYearStartMonth": 0
     },
-    "title": "New dashboard",
+    "title": "Workstation resource usage",
     "variables": [],
     "preferences": {
       "layout": {
