@@ -53,6 +53,8 @@ spec:
               value: "Milky Way"
             - name: ICON
               value: "/universe/assets/galaxy-1.webp"
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: "0"
           {{- if .Values.image_pull_secret }}
             - name: IMAGE_PULL_SECRET
               value: {{ .Values.image_pull_secret }}
