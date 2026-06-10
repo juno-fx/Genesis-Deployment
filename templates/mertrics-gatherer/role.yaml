@@ -27,4 +27,4 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["configmaps"]
-    verbs: ["*"]
+    verbs: ["get", "watch", "list"]
