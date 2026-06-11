@@ -66,6 +66,8 @@ spec:
               name: frontend
             - containerPort: 8000
               name: backend
+          resources:
+            {{- toYaml .Values.genesis.resources | nindent 12 }}
         - name: rhea
           image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
