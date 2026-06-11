@@ -20,6 +20,13 @@ genesis_token_creation_extra_annotations: {}
 # If you run powerful controlplane nodes, you can reuse them to host core Orion services.
 tolerations: []
 
+genesis:
+  resources:
+    requests:
+      cpu: 150m
+      memory: 350Mi
+    # no limits — genesis needs burst capacity
+
 titan:
   tolerations: []
   extra_annotations: []
@@ -33,6 +40,10 @@ titan:
   node_selector:                            # Node selector to deploy the Titan server to
     labels:                                 # Node selector to deploy the Titan server to
       juno-innovations.com/service: "true"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 150Mi
   autoscaling:
     min_replicas: 1                         # Minimum number of replicas to run
     max_replicas: 3                         # Maximum number of replicas to run
@@ -49,9 +60,8 @@ terra:
       juno-innovations.com/service: "true"
   resources:
     requests:
-      cpu: 500m
+      cpu: 250m
       memory: 200Mi
-    limits: {}
   autoscaling:
     min_replicas: 1                         # Minimum number of replicas to run
     max_replicas: 3                         # Maximum number of replicas to run
@@ -66,8 +76,8 @@ rhea:
       value: "true"                                   # Environment variables to set for Rhea
   resources:
     requests:
-      cpu: 200m
-      memory: 100Mi
+      cpu: 50m
+      memory: 20Mi
     limits:
       cpu: 350m
       memory: 250Mi
