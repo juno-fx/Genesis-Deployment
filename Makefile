@@ -45,7 +45,7 @@ down:
 
 argocd:
 	@kubectl create namespace argocd || echo "Argo namespace already exists..."
-	@kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+	@kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml 
 	@sleep 15
 	@kubectl wait --namespace argocd \
 		--for=condition=ready pod \
@@ -63,7 +63,7 @@ ingress:
 
 genesis: cluster ingress argocd
 	@echo "Installing Genesis..."
-	@helm upgrade -i -f .values.yaml $(PROJECT) ./
+	@helm upgrade -i -f ./values.yaml $(PROJECT) ./
 	@echo "Waiting for Genesis to settle..."
 	@sleep 10
 	@kubectl wait --namespace argocd \

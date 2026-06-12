@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: metrics-gatherer
+  namespace: argocd
+  labels:
+    metrics: "enabled"
+spec:
+  selector:
+    app: metrics-gatherer
+  ports:
+    - port: 13001
+      targetPort: 13001
+      protocol: TCP
+      name: metrics
