@@ -4,6 +4,9 @@ metadata:
   name: genesis-ingress
   namespace: argocd
 spec:
+  {{- if .Values.ingressClassName }}
+  ingressClassName: {{ .Values.ingressClassName }}
+  {{- end }}
   rules:
     - http:
         paths:
@@ -14,3 +17,6 @@ spec:
                 name: genesis
                 port:
                   number: 3000
+      {{- if .Values.host }}
+      host: {{ .Values.host }}
+      {{- end }}
