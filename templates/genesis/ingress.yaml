@@ -3,13 +3,12 @@ kind: Ingress
 metadata:
   name: genesis-ingress
   namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/auth-url: "http://genesis.{{ .Release.Namespace }}.svc.cluster.local:3000/api/socket-auth/"
 spec:
+  {{- if .Values.ingressClassName }}
   ingressClassName: {{ .Values.ingressClassName }}
+  {{- end }}
   rules:
-    - host: {{ .Values.host }}
-      http:
+    - http:
         paths:
           - path: "/"
             pathType: Prefix
@@ -18,10 +17,6 @@ spec:
                 name: genesis
                 port:
                   number: 3000
-          - path: "/socket.io"
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: genesis
-                port:
-                  number: 8000
+      {{- if .Values.host }}
+      host: {{ .Values.host }}
+      {{- end }}
