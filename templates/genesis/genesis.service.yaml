@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: genesis
   namespace: {{ .Values.namespace }}
+  annotations:
+    internal-cks.conductor.technology/warp: "true"
+    internal-cks.conductor.technology/warp-hostname: "genesis"
 spec:
   selector:
     app: genesis
