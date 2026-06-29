@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: orion-userpolicy
-  namespace: argocd
+  namespace: {{ .Values.namespace }}
   labels:
     juno.cedar.user: "true"
 data:

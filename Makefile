@@ -1,5 +1,6 @@
 # vars
 PROJECT="genesis"
+NAMESPACE ?= argocd
 
 .hack/bin/cedar:
 	@cargo install cedar-policy-cli --root .hack
@@ -44,10 +45,10 @@ down:
 	@kind delete cluster --name $(PROJECT)
 
 argocd:
-	@kubectl create namespace argocd || echo "Argo namespace already exists..."
-	@kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml 
+	@kubectl create namespace $(NAMESPACE) || echo "Argo namespace already exists..."
+	@kubectl create -n $(NAMESPACE) -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml 
 	@sleep 15
-	@kubectl wait --namespace argocd \
+	@kubectl wait --namespace $(NAMESPACE) \
 		--for=condition=ready pod \
 		--selector=app.kubernetes.io/name=argocd-server \
 		--timeout=90s
@@ -66,9 +67,9 @@ genesis: cluster ingress argocd
 	@helm upgrade -i -f ./values.yaml $(PROJECT) ./
 	@echo "Waiting for Genesis to settle..."
 	@sleep 10
-	@kubectl wait --namespace argocd \
+	@kubectl wait --namespace $(NAMESPACE) \
 		--for=condition=ready pod \
 		--selector=app=genesis \
 		--timeout=180s
 	@echo "Genesis ready..."
-	@kubectl get pods -n argocd
+	@kubectl get pods -n $(NAMESPACE)

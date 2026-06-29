@@ -6,7 +6,7 @@ permit (
      Action::"PUT",
      Action::"DELETE",
      Action::"PATCH"],
-  resource == argocd::Service::"titan"
+  resource == {{ .Values.namespace }}::Service::"titan"
 )
 when
 {
@@ -26,7 +26,7 @@ permit (
      Action::"PUT",
      Action::"DELETE",
      Action::"PATCH"],
-  resource == argocd::Service::"terra"
+  resource == {{ .Values.namespace }}::Service::"terra"
 )
 when
 {
@@ -46,7 +46,7 @@ permit (
      Action::"PUT",
      Action::"DELETE",
      Action::"PATCH"],
-  resource == argocd::Service::"genesis"
+  resource == {{ .Values.namespace }}::Service::"genesis"
 )
 when
 {
@@ -66,7 +66,7 @@ permit (
      Action::"PUT",
      Action::"DELETE",
      Action::"PATCH"],
-  resource == argocd::Service::"metrics-gatherer"
+  resource == {{ .Values.namespace }}::Service::"metrics-gatherer"
 )
 when
 {

@@ -1,3 +1,5 @@
+namespace: argocd
+
 image:
   registry: "junoinnovations"
   repository: "genesis"
