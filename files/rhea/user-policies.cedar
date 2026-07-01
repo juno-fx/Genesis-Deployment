@@ -7,7 +7,7 @@ permit (
 
 // These are wide open
 permit (principal, action, resource)
-when { context.url like "*/home/projects/" || context.url like "*/home/" };
+when { context.url like "*/home/projects/" || context.url like "*/home/workspaces/" || context.url like "*/home/" };
 
 permit (
   principal in Group::"kuiper",
@@ -25,6 +25,7 @@ when
 {
   context.url like "*/genesis/ansible*" ||
   context.url like "*/genesis/projects*" ||
+  context.url like "*/genesis/workspaces*" ||
   context.url like "*/genesis/storage*" ||
   context.url like "*/genesis/network*" ||
   context.url like "*/genesis/license*" ||
