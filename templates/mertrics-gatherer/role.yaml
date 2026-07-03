@@ -38,3 +38,12 @@ rules:
     resources: ["secrets"]
     resourceNames: ["juno-license-tokens"]
     verbs: ["get", "list", "update", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: token-secret-creator-role
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["create"]  # ← no resourceNames restriction for create
