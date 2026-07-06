@@ -19,7 +19,8 @@ print-ecr-image-versions:
 	@.hack/print-ecr-image-versions.sh
 
 format: .hack/bin/cedar
-	@.hack/bin/cedar format --write -p files/rhea/policies.cedar
+	@.hack/bin/cedar format --write -p files/rhea/system-policies.cedar
+	@.hack/bin/cedar format --write -p files/rhea/user-policies.cedar
 
 lint: lint-kubernetes lint-cedar lint-ansible lint-scripts
 
