@@ -23,11 +23,62 @@ This chart has been tested with these ingress controllers:
 
 All three are tested in Kind and should work in production Kubernetes clusters.
 
-Set the `ingressClassName` value to match your cluster's ingress class configuration.
+Set `ingress.className` to match your cluster's ingress class configuration.
+
+> The root-level `ingressClassName` is deprecated and will be removed in a future release. Use `ingress.className` instead.
 
 ### Gateway API
 
 Gateway API resources are not included in this chart but can be used by pointing an HTTPRoute at the `genesis` service (ports 3000 / 8000).
+
+---
+
+## Service and Ingress Configuration
+
+### Service
+
+The genesis service (external-facing) supports configurable type and annotations.
+
+```yaml
+service:
+  type: ClusterIP            # ClusterIP | LoadBalancer | NodePort
+  annotations: {}            # Annotations applied to the genesis service
+```
+
+Example for Coreweave CKS (public LoadBalancer with DNS):
+
+```yaml
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/coreweave-load-balancer-type: public
+    service.beta.kubernetes.io/external-hostname: genesis
+```
+
+The internal services (titan, terra, metrics-gatherer) are always ClusterIP and not user-configurable.
+
+### Ingress
+
+The ingress resource can be toggled and configured independently.
+
+```yaml
+ingress:
+  enabled: true              # Toggle the ingress resource on/off
+  className: ""              # Overrides root ingressClassName when set; falls back to it when empty
+  annotations: {}            # Annotations applied to the ingress resource
+```
+
+When `ingress.enabled` is `false`, the ingress resource is omitted entirely.
+
+Annotations on the ingress are useful for provider-specific features. Example for Traefik with cert-manager:
+
+```yaml
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+```
 
 ---
 
@@ -129,7 +180,7 @@ The test scripts (`smoke-test.sh` / `interactive-test.sh`) do the following:
 3. Install the selected ingress controller (nginx/traefik/cilium)
 4. Install ArgoCD v2.10.16 (required by Genesis for argoproj.io CRDs)
 5. Create a `juno-auth-secret` with a test token
-6. Deploy the chart with the scenario values file and `ingressClassName` set
+6. Deploy the chart with the scenario values file and `ingressClassName` / `ingress.className` set to the provider
 7. Wait for the Genesis pod to be ready
 8. Run a test container (`curlimages/curl` or `lscr.io/linuxserver/chromium`) on the Kind Docker network
 

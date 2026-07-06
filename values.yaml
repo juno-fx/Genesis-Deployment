@@ -92,4 +92,16 @@ rhea:
       cpu: 350m
       memory: 250Mi
 
+# DEPRECATED — use ingress.className instead. Will be removed in a future release.
 ingressClassName: nginx
+
+# Service configuration for the external-facing genesis service
+service:
+  type: ClusterIP            # ClusterIP | LoadBalancer | NodePort
+  annotations: {}            # Annotations applied to the genesis service
+
+# Ingress configuration
+ingress:
+  enabled: true              # Toggle the ingress resource on/off
+  className: ""              # Overrides root ingressClassName when set; falls back to it when empty
+  annotations: {}            # Annotations applied to the ingress resource
