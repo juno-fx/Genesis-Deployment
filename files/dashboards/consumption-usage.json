@@ -5,8 +5,8 @@
     "name": "ju8d7qt",
     "namespace": "default",
     "uid": "33268f52-cae3-4d93-a126-7537317e7f44",
-    "resourceVersion": "1783423861225001",
-    "generation": 1,
+    "resourceVersion": "1783438426190015",
+    "generation": 2,
     "creationTimestamp": "2026-07-07T11:30:03Z",
     "labels": {
       "grafana.app/deprecatedInternalID": "2800074331996160"
@@ -15,9 +15,11 @@
       "grafana.app/createdBy": "user:bfrdx332sbh8ge",
       "grafana.app/managedBy": "classic-file-provisioning",
       "grafana.app/managerId": "sidecarProvider",
-      "grafana.app/sourceChecksum": "4b41708adf5bf1e544f2f0a6e459e2f1",
+      "grafana.app/sourceChecksum": "65ef2662e46dd8fc92c8354d0da6e100",
       "grafana.app/sourcePath": "/tmp/dashboards/consumption-usage.json",
-      "grafana.app/sourceTimestamp": "1783423860000",
+      "grafana.app/sourceTimestamp": "1783438425000",
+      "grafana.app/updatedBy": "access-policy:service",
+      "grafana.app/updatedTimestamp": "2026-07-07T15:33:46Z",
       "grafana.app/folder": ""
     }
   },
@@ -564,6 +566,144 @@
             "version": "13.1.0"
           }
         }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 7,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "# Consumption licensing\n\nThe panels in this dashboard describe your CPU hour consumption against your current tokens.\n\nFor further information on consumption licensing or to order more tokens please visit https://www.juno-innovations.com/contact/sales",
+                "mode": "markdown"
+              }
+            },
+            "version": "13.1.0"
+          }
+        }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "argocd_mg_consumption_licensing_enabled",
+                        "instant": true,
+                        "legendFormat": "__auto",
+                        "range": false
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 8,
+          "links": [],
+          "title": "Consumption Licensing",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "mappings": [
+                    {
+                      "options": {
+                        "0": {
+                          "index": 0,
+                          "text": "Disabled"
+                        },
+                        "1": {
+                          "index": 1,
+                          "text": "Enabled"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#939393",
+                        "value": 0
+                      },
+                      {
+                        "color": "green",
+                        "value": 1
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.1.0"
+          }
+        }
       }
     },
     "layout": {
@@ -633,6 +773,32 @@
               "width": 12,
               "x": 12,
               "y": 8
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-8"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 12,
+              "y": 16
             }
           }
         ]
