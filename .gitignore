@@ -5,3 +5,4 @@
 .hack/.crates2.json
 .hack/.crates.toml
 files/genesis/roles/**
+.idea

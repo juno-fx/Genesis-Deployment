@@ -50,3 +50,29 @@ roleRef:
   name: metrics-gatherer-rhea-config-reader
   kind: Role
   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: metrics-gatherer-license-secret-binding
+subjects:
+  - kind: ServiceAccount
+    name: metrics-gatherer
+    namespace: argocd
+roleRef:
+  name: token-secret-role
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: token-secret-creator-binding
+subjects:
+  - kind: ServiceAccount
+    name: metrics-gatherer
+    namespace: argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: token-secret-creator-role

@@ -3,7 +3,12 @@ kind: Service
 metadata:
   name: genesis
   namespace: argocd
+  annotations:
+{{- range $key, $value := .Values.service.annotations }}
+    {{ $key }}: "{{ $value }}"
+{{- end }}
 spec:
+  type: {{ .Values.service.type }}
   selector:
     app: genesis
   ports:
