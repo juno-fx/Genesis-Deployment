@@ -1,0 +1,9 @@
+host: orion.local
+pull_policy: IfNotPresent
+env:
+  BASIC_AUTH_EMAIL: "admin@juno-innovations.com"
+  BASIC_AUTH_PASSWORD: "juno"
+titan:
+  owner: admin
+  email: admin@juno-innovations.com
+  uid: 1000
