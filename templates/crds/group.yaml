@@ -32,8 +32,8 @@ spec:
             spec:
               type: object
               x-kubernetes-validations:
-                - rule: "self.type == 'service' || self.type == 'role' || self.type == 'project' || self.type == 'posix'"
-                  message: "Group type needs to be either service, role, project, or posix"
+                - rule: "self.type == 'service' || self.type == 'role' || self.type == 'project' || self.type == 'workspace' || self.type == 'posix'"
+                  message: "Group type needs to be either service, role, project, workspace, or posix"
               required:
                 - members
                 - type
