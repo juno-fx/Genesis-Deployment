@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: genesis
-  namespace: argocd
+  namespace: {{ .Release.Namespace }}
   labels:
    juno-innovations.com/service-deployment: "genesis"
   annotations:
@@ -49,6 +49,8 @@ spec:
                 secretKeyRef:
                   key: token
                   name: juno-auth-secret
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
             - name: GALAXY
               value: "Milky Way"
             - name: ICON
@@ -70,6 +72,8 @@ spec:
           image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           {{- range .Values.rhea.env }}
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
