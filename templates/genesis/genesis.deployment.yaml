@@ -15,16 +15,12 @@ spec:
   selector:
     matchLabels:
       app: genesis
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 50%
-    type: RollingUpdate
   template:
     metadata:
       labels:
         app: genesis
       annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
         {{- range $key, $value := .Values.extra_annotations }}
           {{ $key }}: "{{ $value }}"
         {{- end }}
@@ -48,11 +44,6 @@ spec:
         - name: genesis
           image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
-          readinessProbe:
-            tcpSocket:
-              port: 3000
-            initialDelaySeconds: 10
-            periodSeconds: 10
           env:
             - name: AUTH_SECRET
               valueFrom:
