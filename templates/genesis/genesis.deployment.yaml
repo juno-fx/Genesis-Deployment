@@ -19,10 +19,10 @@ spec:
     metadata:
       labels:
         app: genesis
+      {{- with .Values.extra_annotations }}
       annotations:
-        {{- range $key, $value := .Values.extra_annotations }}
-          {{ $key }}: "{{ $value }}"
-        {{- end }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       {{- if .Values.tolerations }}
       tolerations:
