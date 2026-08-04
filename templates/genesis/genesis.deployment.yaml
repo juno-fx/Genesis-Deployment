@@ -20,7 +20,7 @@ spec:
       labels:
         app: genesis
       annotations:
-        cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+        anything: true
         {{- range $key, $value := .Values.extra_annotations }}
           {{ $key }}: "{{ $value }}"
         {{- end }}
