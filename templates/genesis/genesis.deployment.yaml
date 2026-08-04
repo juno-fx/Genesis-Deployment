@@ -20,7 +20,7 @@ spec:
       labels:
         app: genesis
       annotations:
-        anything: true
+        anything: "true"
         {{- range $key, $value := .Values.extra_annotations }}
           {{ $key }}: "{{ $value }}"
         {{- end }}
