@@ -15,6 +15,11 @@ spec:
   selector:
     matchLabels:
       app: genesis
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 50%
+    type: RollingUpdate
   template:
     metadata:
       labels:
