@@ -54,9 +54,7 @@ spec:
             - name: ORION_OWNER_UID
               value: "{{ .Values.titan.uid }}"
           resources:
-            requests:
-              cpu: 500m
-              memory: 200Mi
+            {{- toYaml .Values.titan.resources | nindent 12 }}
           ports:
             - containerPort: 8000
               name: endpoint
@@ -83,3 +81,5 @@ spec:
               port: 13000
             initialDelaySeconds: 5
             periodSeconds: 10
+          resources:
+            {{- toYaml .Values.rhea.resources | nindent 12 }}
