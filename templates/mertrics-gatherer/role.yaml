@@ -49,4 +49,4 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
-  verbs: ["create"]  # ← no resourceNames restriction for create
+    verbs: ["create"] # ← no resourceNames restriction for create
