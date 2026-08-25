@@ -23,7 +23,12 @@ spec:
                 name: genesis
                 port:
                   number: 3000
-      {{- if .Values.host }}
+      {{- /* Kubernetes rejects an IP in Ingress spec.rules[].host ("must be a
+             DNS name, not an IP address"). When host is an IP, omit the field
+             so the rule matches by node/LB IP via the default server block —
+             mirrors the same guard in the Hubble chart's ingress. */}}
+      {{- $hostIsIP := regexMatch "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+(:[0-9]+)?$" (.Values.host | default "") }}
+      {{- if and .Values.host (not $hostIsIP) }}
       host: {{ .Values.host }}
       {{- end }}
 {{- end }}
