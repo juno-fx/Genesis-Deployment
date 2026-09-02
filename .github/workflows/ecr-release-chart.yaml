@@ -39,6 +39,11 @@ jobs:
         with:
           registries: "709825985650"
 
+      - name: Login to Amazon ECR via helm
+        shell: bash
+        run: |
+           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | helm registry login --username AWS --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
+
       - name: Package and Push Chart to ECR
         shell: bash
         run: |
