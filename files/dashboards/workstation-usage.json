@@ -66,7 +66,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(user) (argocd_mg_user_CPU_total_gauge)",
+                        "expr": "sum by(user) ({{ .Release.Namespace }}_mg_user_CPU_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -152,7 +152,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(workload) (argocd_mg_workload_type_memory_total_gauge)",
+                        "expr": "sum by(workload) ({{ .Release.Namespace }}_mg_workload_type_memory_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -235,7 +235,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(workload) (argocd_mg_workload_type_total_gauge)",
+                        "expr": "sum by(workload) ({{ .Release.Namespace }}_mg_workload_type_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -317,7 +317,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(workload) (argocd_mg_workload_type_total_gauge)",
+                        "expr": "sum by(workload) ({{ .Release.Namespace }}_mg_workload_type_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -436,7 +436,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum(argocd_mg_user_CPU_total_gauge)",
+                        "expr": "sum({{ .Release.Namespace }}_mg_user_CPU_total_gauge)",
                         "legendFormat": "Cores",
                         "range": true
                       },
@@ -556,7 +556,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum(argocd_mg_user_memory_total_gauge)",
+                        "expr": "sum({{ .Release.Namespace }}_mg_user_memory_total_gauge)",
                         "legendFormat": "Memory",
                         "range": true
                       },
@@ -677,7 +677,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(user) (argocd_mg_user_memory_total_gauge)",
+                        "expr": "sum by(user) ({{ .Release.Namespace }}_mg_user_memory_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -762,7 +762,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum(argocd_mg_user_workload_total_gauge)",
+                        "expr": "sum({{ .Release.Namespace }}_mg_user_workload_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -847,7 +847,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
-                        "expr": "sum by (user) (increase(argocd_mg_user_CPU_hours_total[$__range]))",
+                        "expr": "sum by (user) (increase({{ .Release.Namespace }}_mg_user_CPU_hours_total[$__range]))",
                         "format": "table",
                         "instant": true,
                         "legendFormat": "__auto",
@@ -960,7 +960,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(exported_namespace) (argocd_mg_user_memory_total_gauge)",
+                        "expr": "sum by(exported_namespace) ({{ .Release.Namespace }}_mg_user_memory_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -1043,7 +1043,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(exported_namespace) (argocd_mg_user_CPU_total_gauge)",
+                        "expr": "sum by(exported_namespace) ({{ .Release.Namespace }}_mg_user_CPU_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -1126,7 +1126,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(exported_namespace) (argocd_mg_user_workload_total_gauge)",
+                        "expr": "sum by(exported_namespace) ({{ .Release.Namespace }}_mg_user_workload_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
@@ -1246,7 +1246,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "builder",
-                        "expr": "sum by(workload) (argocd_mg_workload_type_CPU_total_gauge)",
+                        "expr": "sum by(workload) ({{ .Release.Namespace }}_mg_workload_type_CPU_total_gauge)",
                         "legendFormat": "__auto",
                         "range": true
                       },
