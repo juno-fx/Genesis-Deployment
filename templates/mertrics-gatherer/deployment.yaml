@@ -49,6 +49,8 @@ spec:
           image: "{{ .Values.metricsGatherer.image.registry }}/{{ .Values.metricsGatherer.image.repository }}:{{ .Values.metricsGatherer.image.tag }}"
           {{- if .Values.metricsGatherer.resources }}
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           {{- range .Values.metricsGatherer.env }}
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
@@ -70,6 +72,8 @@ spec:
           image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           {{- range .Values.rhea.env }}
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
