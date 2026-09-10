@@ -10,7 +10,5 @@ metadata:
     grafana_dashboard: "1"
 data:
   {{ base $path }}: |
-    {{ $content | toString | nindent 4 | trim }}
+    {{- tpl ($content | toString) $ | trim | nindent 4 }}
 {{- end }}
-
-

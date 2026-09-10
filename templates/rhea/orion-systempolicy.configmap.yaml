@@ -7,4 +7,4 @@ metadata:
     juno.cedar.system: "true"
 data:
   policies.cedar: |-
-{{ .Files.Get "files/rhea/system-policies.cedar" | indent 4 }}
+{{ tpl (.Files.Get "files/rhea/system-policies.cedar") . | indent 4 }}
