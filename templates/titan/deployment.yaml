@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: titan
-  namespace: argocd
+  namespace: {{ .Release.Namespace }}
   labels:
     juno-innovations.com/service-deployment: "titan"
 spec:
@@ -47,6 +47,8 @@ spec:
           imagePullPolicy: {{ .Values.pull_policy }}
           image: "{{ .Values.titan.image.registry }}/{{ .Values.titan.image.repository }}:{{ .Values.titan.image.tag }}"
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
             - name: ORION_OWNER
               value: {{ .Values.titan.owner }}
             - name: ORION_EMAIL
@@ -64,6 +66,8 @@ spec:
           image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           {{- range .Values.rhea.env }}
             - name: {{ .name | quote }}
               value: {{ .value | quote }}

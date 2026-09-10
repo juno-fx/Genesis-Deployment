@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: terra
-  namespace: argocd
+  namespace: {{ .Release.Namespace }}
   labels:
     juno-innovations.com/service-deployment: "terra"
 spec:
@@ -45,6 +45,9 @@ spec:
       {{- end }}
       containers:
         - name: terra
+          env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           image: "{{ .Values.terra.image.registry }}/{{ .Values.terra.image.repository }}:{{ .Values.terra.image.tag }}"
           {{- if .Values.terra.resources }}
@@ -65,6 +68,8 @@ spec:
           image: "{{ .Values.rhea.image.registry }}/{{ .Values.rhea.image.repository }}:{{ .Values.rhea.image.tag }}"
           imagePullPolicy: {{ .Values.pull_policy }}
           env:
+            - name: GENESIS_NAMESPACE
+              value: "{{ .Release.Namespace }}"
           {{- range .Values.rhea.env }}
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
