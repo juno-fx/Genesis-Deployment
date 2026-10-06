@@ -36,7 +36,9 @@ when
   context.url like "*/genesis/license*" ||
   context.url like "*/genesis/services*" ||
   context.url like "*/genesis/nodes*"
-};
+}
+// Cedar forbids always override permits, so exempt admins explicitly
+unless { principal in Group::"admin" };
 
 permit (
   principal in Group::"titan",
