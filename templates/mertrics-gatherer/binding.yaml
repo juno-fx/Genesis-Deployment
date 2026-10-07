@@ -58,7 +58,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: metrics-gatherer
-    namespace: argocd
+    namespace: {{ .Release.Namespace }}
 roleRef:
   name: token-secret-role
   kind: ClusterRole
@@ -71,7 +71,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: metrics-gatherer
-    namespace: argocd
+    namespace: {{ .Release.Namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
