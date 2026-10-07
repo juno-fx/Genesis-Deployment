@@ -6,3 +6,4 @@
 .hack/.crates.toml
 files/genesis/roles/**
 .idea
+.tmp-*

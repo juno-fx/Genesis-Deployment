@@ -31,8 +31,10 @@ lint-ansible:
 	ansible-lint files/genesis/juno-playbook-k3s-provision.yml
 	
 lint-cedar: .hack/bin/cedar
-	@.hack/bin/cedar format --check -p files/rhea/system-policies.cedar
-	@.hack/bin/cedar format --check -p files/rhea/user-policies.cedar
+	@sed 's/{{ .Release.Namespace }}/default/g' files/rhea/system-policies.cedar > .tmp-system-policies.cedar
+	@sed 's/{{ .Release.Namespace }}/default/g' files/rhea/user-policies.cedar > .tmp-user-policies.cedar
+	@.hack/bin/cedar format --check -p .tmp-system-policies.cedar
+	@.hack/bin/cedar format --check -p .tmp-user-policies.cedar
 
 lint-kubernetes:
 	@.hack/lint-kube.sh
