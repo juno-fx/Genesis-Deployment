@@ -8,10 +8,11 @@ INGRESS_NGINX_URL="https://raw.githubusercontent.com/kubernetes/ingress-nginx/ma
 	@cargo install cedar-policy-cli --root .hack
 
 publish-ecr:
+	aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 	rm -f orion-genesis*tgz
 	sed -i "s|registry:.*|registry: $(ECR_URL)|g" values.yaml
-	sed -i "s|orion-genesis|orion-genesis-ecr|g" Chart.yaml
-	sed -i 's|repository: "\(.*\)"|repository: "\1-ecr"|g' values.yaml
+	sed -i "s|orion-genesis|orion-genesis-core|g" Chart.yaml
+	sed -i 's|repository: "\(.*\)"|repository: "\1-core"|g' values.yaml
 	helm package .
 	helm push orion-genesis*tgz oci://$(ECR_URL)/
 
