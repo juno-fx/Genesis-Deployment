@@ -26,7 +26,7 @@ titan:
   image:
     registry: "junoinnovations"
     repository: "titan"
-    tag: "v2.2.1"
+    tag: "v2.2.2"
 #  owner: bob                                # Optional. Owner of the cluster. If set, Titan creates this user on startup
 #  email: test@email.com                     # Optional. Email for the owner of the cluster
 #  uid: 1005                                 # Optional. UID of the owner of the cluster
