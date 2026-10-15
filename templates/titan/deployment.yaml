@@ -49,12 +49,18 @@ spec:
           env:
             - name: GENESIS_NAMESPACE
               value: "{{ .Release.Namespace }}"
+            {{- if .Values.titan.owner }}
             - name: ORION_OWNER
-              value: {{ .Values.titan.owner }}
+              value: "{{ .Values.titan.owner }}"
+            {{- end }}
+            {{- if .Values.titan.email }}
             - name: ORION_EMAIL
-              value: {{ .Values.titan.email }}
+              value: "{{ .Values.titan.email }}"
+            {{- end }}
+            {{- if .Values.titan.uid }}
             - name: ORION_OWNER_UID
               value: "{{ .Values.titan.uid }}"
+            {{- end }}
           resources:
             requests:
               cpu: 500m
