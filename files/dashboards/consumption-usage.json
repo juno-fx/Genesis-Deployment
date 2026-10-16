@@ -596,7 +596,7 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "# Consumption licensing\n\nThe panels in this dashboard describe your CPU hour consumption against your current tokens.\n\nFor further information on consumption licensing or to order more tokens please visit https://www.juno-innovations.com/contact/sales",
+                "content": "# Managed Core Hours Licensing\n\nThe panels in this dashboard describe your Managed Core Hours against your current tokens.\n\nFor further information on Managed Core Hours licensing or to order more tokens please visit https://www.juno-innovations.com/contact/sales",
                 "mode": "markdown"
               }
             },
@@ -642,7 +642,7 @@
           "description": "",
           "id": 8,
           "links": [],
-          "title": "Consumption Licensing",
+          "title": "Managed Core Hours Licensing",
           "vizConfig": {
             "group": "stat",
             "kind": "VizConfig",
@@ -936,7 +936,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "Consumption token usage",
+    "title": "Managed Core Hours token usage",
     "variables": []
   }
 }
