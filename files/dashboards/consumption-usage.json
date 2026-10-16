@@ -86,7 +86,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "Total CPU hours remaining",
+          "title": "Total Core hours remaining",
           "vizConfig": {
             "group": "timeseries",
             "kind": "VizConfig",
@@ -209,7 +209,7 @@
           "description": "",
           "id": 2,
           "links": [],
-          "title": "Percentage CPU hours remaining",
+          "title": "Percentage Core hours remaining",
           "vizConfig": {
             "group": "gauge",
             "kind": "VizConfig",
