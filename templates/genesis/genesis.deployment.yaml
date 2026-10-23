@@ -74,6 +74,8 @@ spec:
           {{- else }}
             - name: "env.AUTH_TRUST_HOST"
               value: "enabled"
+            - name: "env.NEW_CLUSTER"
+              value: "enabled"
           {{- end }}
           ports:
             - containerPort: 3000
