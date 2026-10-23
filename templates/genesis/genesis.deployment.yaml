@@ -68,6 +68,13 @@ spec:
             - name: {{ $key }}
               value: {{ $value }}
           {{- end }}
+          {{- with .Values.host }}
+            - name: "env.NEXTAUTH_URL"
+              value: "{{ $.Values.http_scheme }}://{{ . }}/api/auth"
+          {{- else }}
+            - name: "env.AUTH_TRUST_HOST"
+              value: "enabled"
+          {{- end }}
           ports:
             - containerPort: 3000
               name: frontend
