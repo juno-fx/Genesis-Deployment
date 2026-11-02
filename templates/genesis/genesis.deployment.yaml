@@ -64,16 +64,16 @@ spec:
             - name: IMAGE_PULL_SECRET
               value: {{ .Values.image_pull_secret }}
           {{- end }}
-          {{- range $key, $value := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $value }}
-          {{- end }}
           {{- with .Values.host }}
             - name: "NEXTAUTH_URL"
               value: "{{ $.Values.http_scheme }}://{{ . }}/api/auth"
           {{- else }}
             - name: "NEW_CLUSTER"
               value: "enabled"
+          {{- end }}
+          {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value }}
           {{- end }}
           ports:
             - containerPort: 3000
