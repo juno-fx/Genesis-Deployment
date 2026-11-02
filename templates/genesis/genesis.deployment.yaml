@@ -69,10 +69,10 @@ spec:
               value: {{ $value }}
           {{- end }}
           {{- with .Values.host }}
-            - name: "env.NEXTAUTH_URL"
+            - name: "NEXTAUTH_URL"
               value: "{{ $.Values.http_scheme }}://{{ . }}/api/auth"
           {{- else }}
-            - name: "env.NEW_CLUSTER"
+            - name: "NEW_CLUSTER"
               value: "enabled"
           {{- end }}
           ports:
